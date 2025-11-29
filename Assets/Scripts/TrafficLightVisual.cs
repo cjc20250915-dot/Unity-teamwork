@@ -2,37 +2,31 @@ using UnityEngine;
 
 public class TrafficLightVisual : MonoBehaviour
 {
-    public GameObject redLight;
-    public GameObject yellowLight;
     public GameObject greenLight;
+    public GameObject redLight;
     public IntersectionController controller;
+
+    [Header("此灯是否是南北方向的灯？")]
+    public bool isNorthSouth = true;
+
     void Start()
     {
-        if (controller != null) controller.OnStateChanged += OnStateChanged;
-        UpdateVisual();
+        if (controller != null)
+            controller.OnStateChanged += UpdateVisual;
+
+        // 初始化显示
+        UpdateVisual(controller.currentState);
     }
-    void OnDestroy()
+
+    void UpdateVisual(IntersectionController.IntersectionState state)
     {
-        if (controller != null) controller.OnStateChanged -= OnStateChanged;
-    }
-    void OnStateChanged(IntersectionController.IntersectionState state)
-    {
-        UpdateVisual();
-    }
-    void Update()
-    {
-        // if controller has yellow internal flag, we could show yellow; omitted for brevity
-    }
-    void UpdateVisual()
-    {
-        if (controller == null) return;
-        var st = controller.currentState;
-        redLight.SetActive(st != IntersectionController.IntersectionState.NS_Green && st != IntersectionController.IntersectionState.EW_Green); // fallback
-        // crude: show green for NS or EW accordingly
-        // We'll just alternate: when NS green -> activate corresponding light object(s).
-        // For simplicity here, show greenLight active always when st == NS_Green (tweak to show per direction in refined setups)
-        greenLight.SetActive(true);
-        redLight.SetActive(false);
-        yellowLight.SetActive(false);
+        // 是否是当前方向的绿灯
+        bool nsGreen = (state == IntersectionController.IntersectionState.NS_Green);
+
+        // 若本灯属于 NS 方向，则绿灯取 nsGreen；若属于 EW，则取 !nsGreen
+        bool myGreen = isNorthSouth ? nsGreen : !nsGreen;
+
+        greenLight.SetActive(myGreen);
+        redLight.SetActive(!myGreen);
     }
 }
