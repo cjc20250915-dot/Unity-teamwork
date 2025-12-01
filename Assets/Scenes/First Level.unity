@@ -210,16 +210,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92495e0123123c45af032419478b284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carPrefab: {fileID: 3547751487240709627, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+  carPrefabs:
+  - {fileID: 3261659395636965136, guid: 0d02e79899c8fd5429b3725be9b0599e, type: 3}
+  - {fileID: 974035864260065414, guid: 51a08a149a582194fa7c544bd5d2da22, type: 3}
+  - {fileID: 150782985509003006, guid: b12fee3b50573ad4d942e3096b9e7e81, type: 3}
+  - {fileID: 300842999742048784, guid: 58b5897f034950341b7daf24181765e6, type: 3}
+  - {fileID: 5509225848356162634, guid: 52b1011bcff811841adb0bb9cfc23eb0, type: 3}
+  - {fileID: 7192107557129503035, guid: 11749918bb8258c47a7f075e594ff8ab, type: 3}
   pathWaypoints:
   - {fileID: 1576854626}
   - {fileID: 1959668853}
   - {fileID: 1567013959}
   - {fileID: 1707382117}
   - {fileID: 598824274}
-  spawnIntervalMin: 2
-  spawnIntervalMax: 3
-  maxConcurrent: 4
+  spawnIntervalMin: 1
+  spawnIntervalMax: 4
+  maxConcurrent: 3
+  maxTotalCars: 10
 --- !u!4 &5585542
 Transform:
   m_ObjectHideFlags: 0
@@ -1357,15 +1364,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92495e0123123c45af032419478b284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carPrefab: {fileID: 3547751487240709627, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+  carPrefabs:
+  - {fileID: 3261659395636965136, guid: 0d02e79899c8fd5429b3725be9b0599e, type: 3}
+  - {fileID: 974035864260065414, guid: 51a08a149a582194fa7c544bd5d2da22, type: 3}
+  - {fileID: 150782985509003006, guid: b12fee3b50573ad4d942e3096b9e7e81, type: 3}
+  - {fileID: 300842999742048784, guid: 58b5897f034950341b7daf24181765e6, type: 3}
+  - {fileID: 5509225848356162634, guid: 52b1011bcff811841adb0bb9cfc23eb0, type: 3}
+  - {fileID: 7192107557129503035, guid: 11749918bb8258c47a7f075e594ff8ab, type: 3}
   pathWaypoints:
   - {fileID: 1202567518}
   - {fileID: 1030248075}
   - {fileID: 1168244815}
   - {fileID: 1268506958}
-  spawnIntervalMin: 2
-  spawnIntervalMax: 3
-  maxConcurrent: 4
+  spawnIntervalMin: 1
+  spawnIntervalMax: 4
+  maxConcurrent: 3
+  maxTotalCars: 10
 --- !u!4 &115172137
 Transform:
   m_ObjectHideFlags: 0
@@ -16968,7 +16982,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92495e0123123c45af032419478b284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carPrefab: {fileID: 3547751487240709627, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+  carPrefabs:
+  - {fileID: 3261659395636965136, guid: 0d02e79899c8fd5429b3725be9b0599e, type: 3}
+  - {fileID: 974035864260065414, guid: 51a08a149a582194fa7c544bd5d2da22, type: 3}
+  - {fileID: 150782985509003006, guid: b12fee3b50573ad4d942e3096b9e7e81, type: 3}
+  - {fileID: 300842999742048784, guid: 58b5897f034950341b7daf24181765e6, type: 3}
+  - {fileID: 5509225848356162634, guid: 52b1011bcff811841adb0bb9cfc23eb0, type: 3}
+  - {fileID: 7192107557129503035, guid: 11749918bb8258c47a7f075e594ff8ab, type: 3}
   pathWaypoints:
   - {fileID: 1658571985}
   - {fileID: 1388445152}
@@ -16976,9 +16996,10 @@ MonoBehaviour:
   - {fileID: 2015404401}
   - {fileID: 287584727}
   - {fileID: 698401557}
-  spawnIntervalMin: 2
-  spawnIntervalMax: 3
-  maxConcurrent: 4
+  spawnIntervalMin: 1
+  spawnIntervalMax: 4
+  maxConcurrent: 3
+  maxTotalCars: 10
 --- !u!4 &1579952663
 Transform:
   m_ObjectHideFlags: 0
@@ -20677,15 +20698,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b92495e0123123c45af032419478b284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  carPrefab: {fileID: 3547751487240709627, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+  carPrefabs:
+  - {fileID: 3261659395636965136, guid: 0d02e79899c8fd5429b3725be9b0599e, type: 3}
+  - {fileID: 974035864260065414, guid: 51a08a149a582194fa7c544bd5d2da22, type: 3}
+  - {fileID: 150782985509003006, guid: b12fee3b50573ad4d942e3096b9e7e81, type: 3}
+  - {fileID: 300842999742048784, guid: 58b5897f034950341b7daf24181765e6, type: 3}
+  - {fileID: 5509225848356162634, guid: 52b1011bcff811841adb0bb9cfc23eb0, type: 3}
+  - {fileID: 7192107557129503035, guid: 11749918bb8258c47a7f075e594ff8ab, type: 3}
   pathWaypoints:
   - {fileID: 1001686718}
   - {fileID: 1322844494}
   - {fileID: 501676116}
   - {fileID: 520219767}
-  spawnIntervalMin: 2
-  spawnIntervalMax: 3
-  maxConcurrent: 4
+  spawnIntervalMin: 1
+  spawnIntervalMax: 4
+  maxConcurrent: 3
+  maxTotalCars: 10
 --- !u!4 &2004242764
 Transform:
   m_ObjectHideFlags: 0

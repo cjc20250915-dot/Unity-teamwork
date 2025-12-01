@@ -4,13 +4,25 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {
-    public GameObject carPrefab;
-    public List<Transform> pathWaypoints; // assign the waypoint sequence for this spawn
+    [Header("车模型（在这里放 6 个 Variant）")]
+    public List<GameObject> carPrefabs;    // ★ 新增：多车型随机生成
+
+    [Header("路径 Waypoints")]
+    public List<Transform> pathWaypoints;
+
+    [Header("生成间隔")]
     public float spawnIntervalMin = 1.2f;
     public float spawnIntervalMax = 3.0f;
+
+    [Header("最大同时存在车辆数")]
     public int maxConcurrent = 6;
 
+    [Header("总生成数量上限 (-1 = 不限制)")]
+    public int maxTotalCars = -1;
+
     int aliveCount = 0;
+    int totalSpawned = 0;
+
     void Start()
     {
         StartCoroutine(SpawnLoop());
@@ -20,10 +32,16 @@ public class CarSpawner : MonoBehaviour
     {
         while (true)
         {
+            // 达到总生成上限 → 停止协程
+            if (maxTotalCars >= 0 && totalSpawned >= maxTotalCars)
+                yield break;
+
+            // 当前存活数量未达上限 → 生成车辆
             if (aliveCount < maxConcurrent)
             {
                 SpawnCar();
             }
+
             float wait = Random.Range(spawnIntervalMin, spawnIntervalMax);
             yield return new WaitForSeconds(wait);
         }
@@ -31,23 +49,37 @@ public class CarSpawner : MonoBehaviour
 
     void SpawnCar()
     {
-        GameObject go = Instantiate(carPrefab, transform.position, transform.rotation);
+        if (carPrefabs == null || carPrefabs.Count == 0)
+        {
+            Debug.LogWarning("CarSpawner: 车预制体列表为空！");
+            return;
+        }
+
+        // 从 6 个预制体中随机选择一个
+        GameObject prefab = carPrefabs[Random.Range(0, carPrefabs.Count)];
+
+        GameObject go = Instantiate(prefab, transform.position, transform.rotation);
+
         aliveCount++;
+        totalSpawned++;
+
+        // 设置路径与速度
         var wf = go.GetComponent<WaypointFollower>();
         if (wf != null)
         {
             wf.waypoints = new List<Transform>(pathWaypoints);
             wf.maxSpeed = Random.Range(4.0f, 8.0f);
         }
-        var coll = go.GetComponent<Collider>();
-        var rb = go.GetComponent<Rigidbody>();
-        // subscribe to destroy hook to decrement aliveCount
+
+        // 等待车辆销毁后减少 aliveCount
         StartCoroutine(WaitUntilDestroyed(go));
     }
 
-    System.Collections.IEnumerator WaitUntilDestroyed(GameObject go)
+    IEnumerator WaitUntilDestroyed(GameObject go)
     {
-        while (go != null) yield return null;
+        while (go != null && go)
+            yield return null;
+
         aliveCount = Mathf.Max(0, aliveCount - 1);
     }
 }
