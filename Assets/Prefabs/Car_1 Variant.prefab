@@ -107,6 +107,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car_1 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3631377511539395832, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: stoppingDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5160745335206306533, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
       propertyPath: m_Size.x
       value: 1.5
@@ -114,6 +118,22 @@ PrefabInstance:
     - target: {fileID: 5160745335206306533, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
       propertyPath: m_Size.z
       value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214932698276643806, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: reactionTime
+      value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214932698276643806, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: sensorRadius
+      value: 0.75
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214932698276643806, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: baseCheckDistance
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214932698276643806, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: brakingDeceleration
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 8149340976198337892, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
       propertyPath: m_LocalScale.x

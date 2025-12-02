@@ -80,12 +80,24 @@ PrefabInstance:
       propertyPath: m_Name
       value: Car_2 Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 3631377511539395832, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: acceleration
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3631377511539395832, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: stoppingDistance
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 5160745335206306533, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
       propertyPath: m_Size.x
       value: 1.5
       objectReference: {fileID: 0}
     - target: {fileID: 5160745335206306533, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
       propertyPath: m_Size.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7214932698276643806, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: baseCheckDistance
       value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8149340976198337892, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
