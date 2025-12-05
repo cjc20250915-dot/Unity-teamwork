@@ -24,7 +24,12 @@ public class WaypointFollower : MonoBehaviour
     void FixedUpdate()
     {
         if (waypoints == null || waypoints.Count == 0) return;
-        if (wpIndex >= waypoints.Count) { Destroy(gameObject, 2f); return; } // reached end
+        if (wpIndex >= waypoints.Count) 
+        {
+            
+            Destroy(gameObject, 2f); 
+            return; 
+        } // reached end
 
         Vector3 target = waypoints[wpIndex].position;
         Vector3 dir = (target - transform.position);

@@ -5,7 +5,7 @@ using UnityEngine;
 public class CarSpawner : MonoBehaviour
 {
     [Header("车模型（在这里放 6 个 Variant）")]
-    public List<GameObject> carPrefabs;    // ★ 新增：多车型随机生成
+    public List<GameObject> carPrefabs;    // 新增：多车型随机生成
 
     [Header("路径 Waypoints")]
     public List<Transform> pathWaypoints;
@@ -20,6 +20,9 @@ public class CarSpawner : MonoBehaviour
     [Header("总生成数量上限 (-1 = 不限制)")]
     public int maxTotalCars = -1;
 
+    [HideInInspector] public bool finished = false;//是否完成生成的布尔值，其实感觉这个没啥用。
+
+
     int aliveCount = 0;
     int totalSpawned = 0;
 
@@ -30,13 +33,14 @@ public class CarSpawner : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
+        // 无限循环 —— 只有生成到总量才退出
         while (true)
         {
-            // 达到总生成上限 → 停止协程
+            // 达到总生成上限 → 跳出循环（不是 yield break）
             if (maxTotalCars >= 0 && totalSpawned >= maxTotalCars)
-                yield break;
+                break;
 
-            // 当前存活数量未达上限 → 生成车辆
+            // 当前存活未达上限 → 才生成
             if (aliveCount < maxConcurrent)
             {
                 SpawnCar();
@@ -45,6 +49,10 @@ public class CarSpawner : MonoBehaviour
             float wait = Random.Range(spawnIntervalMin, spawnIntervalMax);
             yield return new WaitForSeconds(wait);
         }
+
+        // 移出 while，让它一定能执行到这里
+        finished = true;
+        TrafficGameController.Instance?.NotifySpawnerFinished();
     }
 
     void SpawnCar()
@@ -56,9 +64,12 @@ public class CarSpawner : MonoBehaviour
         }
 
         // 从 6 个预制体中随机选择一个
+
         GameObject prefab = carPrefabs[Random.Range(0, carPrefabs.Count)];
 
         GameObject go = Instantiate(prefab, transform.position, transform.rotation);
+
+        TrafficGameController.Instance.OnCarSpawn();
 
         aliveCount++;
         totalSpawned++;

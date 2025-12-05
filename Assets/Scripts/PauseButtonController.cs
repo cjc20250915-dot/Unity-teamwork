@@ -165,10 +165,6 @@ public class PauseButtonController : MonoBehaviour
     
     void Update()
     {
-        // 游戏结束时禁用暂停按钮
-        if (SimpleGameManager.Instance != null && pauseButton != null)
-        {
-            pauseButton.interactable = !SimpleGameManager.Instance.IsGameOver;
-        }
+
     }
 }

@@ -1177,6 +1177,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &36774872
 Transform:
   m_ObjectHideFlags: 0
@@ -2749,6 +2750,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &91758247
 Transform:
   m_ObjectHideFlags: 0
@@ -4750,7 +4752,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &159965597
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6323,6 +6325,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &227516114
 Transform:
   m_ObjectHideFlags: 0
@@ -6531,6 +6534,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &230568362
 Transform:
   m_ObjectHideFlags: 0
@@ -11200,6 +11204,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &345950322
 Transform:
   m_ObjectHideFlags: 0
@@ -23431,6 +23436,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &753424263
 Transform:
   m_ObjectHideFlags: 0
@@ -23807,6 +23813,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &761630512
 Transform:
   m_ObjectHideFlags: 0
@@ -24015,7 +24022,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &771549851
 RectTransform:
   m_ObjectHideFlags: 0
@@ -26477,6 +26484,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &860484579
 Transform:
   m_ObjectHideFlags: 0
@@ -28157,6 +28165,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 5
+  finished: 0
 --- !u!1001 &913723923
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -31030,7 +31039,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1005668603
 RectTransform:
   m_ObjectHideFlags: 0
@@ -40223,6 +40232,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &1316477030
 Transform:
   m_ObjectHideFlags: 0
@@ -44407,6 +44417,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &1452146383
 Transform:
   m_ObjectHideFlags: 0
@@ -46690,6 +46701,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 1
   maxTotalCars: 5
+  finished: 0
 --- !u!1 &1523797625
 GameObject:
   m_ObjectHideFlags: 0
@@ -59755,6 +59767,53 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4618557416055468906, guid: 211ee66cf2cc2f444b0ad19bae4e999a, type: 3}
   m_PrefabInstance: {fileID: 1925421952}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1928518803
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1928518805}
+  - component: {fileID: 1928518804}
+  m_Layer: 0
+  m_Name: TrafficGameController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1928518804
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928518803}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8df9680769b3a44a844400594a26c4a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goldUI: {fileID: 159965596}
+  silverUI: {fileID: 1005668602}
+  copperUI: {fileID: 771549850}
+--- !u!4 &1928518805
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1928518803}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 887.6566, y: 581.44116, z: -5.7784524}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1928675685
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -61496,6 +61555,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &1961912311
 Transform:
   m_ObjectHideFlags: 0
@@ -61764,6 +61824,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &1970113163
 Transform:
   m_ObjectHideFlags: 0
@@ -64363,6 +64424,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &2047225895
 Transform:
   m_ObjectHideFlags: 0
@@ -66323,9 +66385,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25b437fe589b2164babab923d5e02420, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  scoreText: {fileID: 0}
-  gameOverPanel: {fileID: 0}
-  collisionsToLose: 1
 --- !u!4 &2093990720
 Transform:
   m_ObjectHideFlags: 0
@@ -67120,6 +67179,7 @@ MonoBehaviour:
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
+  finished: 0
 --- !u!4 &2117990749
 Transform:
   m_ObjectHideFlags: 0
@@ -67924,3 +67984,4 @@ SceneRoots:
   - {fileID: 1159316356}
   - {fileID: 1237627308}
   - {fileID: 2093990720}
+  - {fileID: 1928518805}
