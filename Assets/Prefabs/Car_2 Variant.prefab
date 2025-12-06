@@ -76,6 +76,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1453313887685044534, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: explosion2D
+      value: 
+      objectReference: {fileID: 3784945155588612436, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
+    - target: {fileID: 1453313887685044534, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: explosionUI
+      value: 
+      objectReference: {fileID: 6427579105611362036, guid: 4923fb604bfcb5f4aa00bbba479d8522, type: 3}
+    - target: {fileID: 1453313887685044534, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
+      propertyPath: explosionUIScreenPrefab
+      value: 
+      objectReference: {fileID: 3784945155588612436, guid: b33d991b542eaae4bb87332955c73ce0, type: 3}
     - target: {fileID: 3547751487240709627, guid: 38d8008ce87349f48a2ffcf61c91f7e6, type: 3}
       propertyPath: m_Name
       value: Car_2 Variant
