@@ -6,7 +6,23 @@ public class CarCollisionHandler : MonoBehaviour
     [Header("2D 爆炸特效（Prefab）")]
     public GameObject explosion2D;
 
+    [Header("爆炸音效")]
+    public AudioClip explosionSFX;     // 新增：爆炸音频
+    private AudioSource audioSource;   // 新增：用于播放音效
+
     bool hasHandled = false;
+
+    void Awake()
+    {
+        // 自动添加 AudioSource（如果预制体没有的话）
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            audioSource = gameObject.AddComponent<AudioSource>();
+            audioSource.playOnAwake = false;
+            audioSource.spatialBlend = 1f;   // 3D 声音（可听到位置）
+        }
+    }
 
     void OnCollisionEnter(Collision collision)
     {
@@ -17,25 +33,26 @@ public class CarCollisionHandler : MonoBehaviour
         {
             hasHandled = true;
 
-            // 生成 2D 卡通爆炸特效 ===
+            // ===== 播放爆炸音效（在销毁前播放） =====
+            if (explosionSFX != null)
+            {
+                audioSource.PlayOneShot(explosionSFX);
+            }
+
+            // ===== 生成 2D 卡通爆炸特效 =====
             if (explosion2D != null)
             {
-                // 取碰撞接触点作为爆炸中心
                 Vector3 pos = collision.contacts[0].point;
-
-                // 让 2D 特效面向摄像机（billboard）
                 Quaternion rot = Quaternion.LookRotation(Camera.main.transform.forward);
 
                 GameObject fx = Instantiate(explosion2D, pos, rot);
-
-                // 自动销毁（如果特效本身没有自动清除）
                 Destroy(fx, 2f);
             }
 
-            // 上报撞车事件 
+            // ===== 上报撞车事件 =====
             TrafficGameController.Instance?.OnCarCrash();
 
-            // 销毁双方车辆（稍微延迟一点，保证特效能出现）
+            // ===== 销毁双方车辆（稍微延迟一点，保证音效与特效能播放） =====
             Destroy(collision.gameObject, 0.05f);
             Destroy(gameObject, 0.05f);
         }
