@@ -20,15 +20,23 @@ public class WaypointFollower : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.constraints = RigidbodyConstraints.FreezeRotation;
     }
+    
+    bool hasFinished = false;
 
     void FixedUpdate()
     {
         if (waypoints == null || waypoints.Count == 0) return;
-        if (wpIndex >= waypoints.Count) 
+
+        //  防止重复触发
+        if (hasFinished) return;
+
+        //  到达终点
+        if (wpIndex >= waypoints.Count)
         {
-            
-            Destroy(gameObject, 2f); 
-            return; 
+            hasFinished = true; // 只会触发一次
+            TrafficGameController.Instance.OnCarFinished();
+            Destroy(gameObject, 2f);
+            return;
         } // reached end
 
         Vector3 target = waypoints[wpIndex].position;

@@ -69,7 +69,7 @@ public class CarSpawner : MonoBehaviour
 
         GameObject go = Instantiate(prefab, transform.position, transform.rotation);
 
-        TrafficGameController.Instance.OnCarSpawn();
+
 
         aliveCount++;
         totalSpawned++;

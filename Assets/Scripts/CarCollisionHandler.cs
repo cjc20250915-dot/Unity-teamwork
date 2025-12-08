@@ -17,7 +17,7 @@ public class CarCollisionHandler : MonoBehaviour
         {
             hasHandled = true;
 
-            // === 生成 2D 卡通爆炸特效 ===
+            // 生成 2D 卡通爆炸特效 ===
             if (explosion2D != null)
             {
                 // 取碰撞接触点作为爆炸中心

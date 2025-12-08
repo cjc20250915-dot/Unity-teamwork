@@ -1,5 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 
 public class TrafficGameController : MonoBehaviour
 {
@@ -10,7 +12,17 @@ public class TrafficGameController : MonoBehaviour
     public GameObject silverUI;
     public GameObject copperUI;
 
-    int totalPlannedCars = 0;
+    [Header("进度条 / 数字 UI")]
+    public Text progressText;               // 普通 Text
+    public TextMeshProUGUI progressTMP;     // TMP 可选
+
+    [Header("撞车比例 UI")]
+    public Text crashRatioText;
+    public TextMeshProUGUI crashRatioTMP;
+
+
+    int totalPlannedCars = 0;   // 所有发车口的总量
+    int processedCars = 0;      // 已经离场的车（正常走完或撞毁）
     int crashedCars = 0;
 
     List<CarSpawner> spawners = new List<CarSpawner>();
@@ -32,7 +44,7 @@ public class TrafficGameController : MonoBehaviour
         // 找到所有生成器
         spawners.AddRange(FindObjectsByType<CarSpawner>(FindObjectsSortMode.None));
 
-        // 计算所有发车口的总数
+        // 计算所有发车数量
         foreach (var sp in spawners)
         {
             if (sp.maxTotalCars > 0)
@@ -42,23 +54,26 @@ public class TrafficGameController : MonoBehaviour
         Debug.Log($"TrafficGameController: plannedCars = {totalPlannedCars}");
     }
 
-    // 用于 spawner 在生成车辆时调用
-    public void OnCarSpawn() { }
-
-    // 撞车时调用
+    // 车辆撞毁
     public void OnCarCrash()
     {
         crashedCars++;
+        processedCars++;   // 属于已处理车辆
     }
 
-    // 由 CarSpawner 在发完所有车时调用
+    // 车辆正常结束（到终点）
+    public void OnCarFinished()
+    {
+        processedCars++;
+    }
+
+    // 所有 spawner 完成
     public void NotifySpawnerFinished()
     {
-        // 当所有 Spawner 都调用过此函数时才真正 finished
         foreach (var sp in spawners)
         {
             if (!sp.finished)
-                return; // 有未完成的
+                return;
         }
 
         allSpawnersFinished = true;
@@ -67,15 +82,32 @@ public class TrafficGameController : MonoBehaviour
 
     void Update()
     {
+        UpdateProgressUI();
+
         if (ended) return;
         if (!allSpawnersFinished) return;
+        if (processedCars < totalPlannedCars) return;  // 新逻辑：等所有车都“处理完”
 
-        // ----------- 关键逻辑：检查是否场景中还有车辆 -------------
-        var cars = GameObject.FindGameObjectsWithTag("Car");
-        if (cars.Length == 0)
-        {
-            EndGame();
-        }
+        EndGame();
+    }
+
+    // 更新可视化 UI
+    void UpdateProgressUI()
+    {
+        if (totalPlannedCars == 0) return;
+
+        float ratio = (float)processedCars / totalPlannedCars;
+        string txt = $"Progress: {processedCars}/{totalPlannedCars} ({ratio:P0})";
+
+        if (progressText) progressText.text = txt;
+        if (progressTMP) progressTMP.text = txt;
+
+        //  撞车比值：crashedCars / total 
+        float crashRatio = (float)crashedCars / totalPlannedCars;
+        string ctxt = $"{crashedCars}/{totalPlannedCars} ";
+
+        if (crashRatioText) crashRatioText.text = ctxt;
+        if (crashRatioTMP) crashRatioTMP.text = ctxt;
     }
 
     void EndGame()
@@ -83,12 +115,12 @@ public class TrafficGameController : MonoBehaviour
         ended = true;
         Time.timeScale = 0f;
 
-        float ratio = totalPlannedCars == 0 ? 1 : (float)crashedCars / totalPlannedCars;
+        float crashRatio = totalPlannedCars == 0 ? 1 : (float)crashedCars / totalPlannedCars;
 
-        if (ratio == 0f) goldUI?.SetActive(true);
-        else if (ratio >= 0.7) silverUI?.SetActive(true);
+        if (crashRatio == 0f) goldUI?.SetActive(true);
+        else if (crashRatio >= 0.7) silverUI?.SetActive(true);
         else copperUI?.SetActive(true);
 
-        Debug.Log($"Game Finished. Crashed={crashedCars}, Planned={totalPlannedCars}, Ratio={ratio}");
+        Debug.Log($"Game Finished. processed={processedCars}, total={totalPlannedCars}");
     }
 }
