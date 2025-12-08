@@ -1173,7 +1173,7 @@ MonoBehaviour:
   - {fileID: 622232107}
   - {fileID: 609027573}
   - {fileID: 1034322464}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -1187,7 +1187,7 @@ Transform:
   m_GameObject: {fileID: 36774870}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -44.620007, y: 0, z: 0.2199974}
+  m_LocalPosition: {x: -44.93, y: 0, z: -0.82}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2746,7 +2746,7 @@ MonoBehaviour:
   - {fileID: 330974998}
   - {fileID: 1581991578}
   - {fileID: 413851648}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -6321,7 +6321,7 @@ MonoBehaviour:
   - {fileID: 1496453675}
   - {fileID: 17816834}
   - {fileID: 1737227566}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -6530,7 +6530,7 @@ MonoBehaviour:
   - {fileID: 404072619}
   - {fileID: 291565220}
   - {fileID: 433292710}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -11200,7 +11200,7 @@ MonoBehaviour:
   - {fileID: 769960944}
   - {fileID: 298550253}
   - {fileID: 1988965406}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -14437,7 +14437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -23644,7 +23644,7 @@ MonoBehaviour:
   - {fileID: 1745211328}
   - {fileID: 1958490901}
   - {fileID: 2141765629}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -23658,7 +23658,7 @@ Transform:
   m_GameObject: {fileID: 753424261}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 47.150017, y: 0, z: 99.49001}
+  m_LocalPosition: {x: 47.72, y: 0, z: 100.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -24021,7 +24021,7 @@ MonoBehaviour:
   - {fileID: 147545234}
   - {fileID: 1731561288}
   - {fileID: 1068298062}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -26840,7 +26840,7 @@ MonoBehaviour:
   - {fileID: 775991886}
   - {fileID: 1841774346}
   - {fileID: 616885153}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -28521,7 +28521,7 @@ MonoBehaviour:
   - {fileID: 1864954860}
   - {fileID: 1627534286}
   - {fileID: 1887159712}
-  spawnIntervalMin: 4
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 5
@@ -29695,7 +29695,7 @@ Camera:
   near clip plane: 0.3
   far clip plane: 1000
   field of view: 55
-  orthographic: 0
+  orthographic: 1
   orthographic size: 35
   m_Depth: -1
   m_CullingMask:
@@ -29720,13 +29720,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 935897719}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.8875176, z: -0.46077394, w: 0}
-  m_LocalPosition: {x: -0.00000035821174, y: 44.42, z: 45.3}
+  m_LocalRotation: {x: -0, y: 0.91689914, z: -0.3991189, w: 0}
+  m_LocalPosition: {x: -0.00000035821174, y: 79.9, z: 74.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 54.874, y: 180, z: 0}
+  m_LocalEulerAnglesHint: {x: 47.046, y: 180, z: 0}
 --- !u!114 &935897723
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -30604,7 +30604,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -44926,7 +44926,7 @@ MonoBehaviour:
   - {fileID: 1289363452}
   - {fileID: 1933513730}
   - {fileID: 350387591}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -47211,10 +47211,10 @@ MonoBehaviour:
   - {fileID: 1292497307}
   - {fileID: 1917627324}
   - {fileID: 1799429237}
-  spawnIntervalMin: 4
-  spawnIntervalMax: 4
+  spawnIntervalMin: 3
+  spawnIntervalMax: 3
   maxConcurrent: 1
-  maxTotalCars: 5
+  maxTotalCars: 3
   finished: 0
 --- !u!1 &1523797625
 GameObject:
@@ -62069,7 +62069,7 @@ MonoBehaviour:
   - {fileID: 1427919073}
   - {fileID: 1549310029}
   - {fileID: 1707875526}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -64950,7 +64950,7 @@ MonoBehaviour:
   - {fileID: 1813867853}
   - {fileID: 2014447095}
   - {fileID: 1467344511}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -67705,7 +67705,7 @@ MonoBehaviour:
   - {fileID: 1983853958}
   - {fileID: 1624091794}
   - {fileID: 1431171542}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
