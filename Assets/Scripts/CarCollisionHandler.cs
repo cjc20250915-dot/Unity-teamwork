@@ -10,6 +10,9 @@ public class CarCollisionHandler : MonoBehaviour
     public AudioClip explosionSFX;     // 新增：爆炸音频
     private AudioSource audioSource;   // 新增：用于播放音效
 
+    [Header("特效向摄像机偏移量")]
+    public float cameraOffset = 0.3f;  // 新增：向摄像机方向偏移距离
+
     bool hasHandled = false;
 
     void Awake()
@@ -33,7 +36,7 @@ public class CarCollisionHandler : MonoBehaviour
         {
             hasHandled = true;
 
-            // ===== 播放爆炸音效（在销毁前播放） =====
+            // ===== 播放爆炸音效 =====
             if (explosionSFX != null)
             {
                 audioSource.PlayOneShot(explosionSFX);
@@ -43,6 +46,12 @@ public class CarCollisionHandler : MonoBehaviour
             if (explosion2D != null)
             {
                 Vector3 pos = collision.contacts[0].point;
+
+                // 计算偏移：从碰撞点向摄像机方向靠近一点
+                Vector3 camDir = (Camera.main.transform.position - pos).normalized;
+                pos += camDir * cameraOffset;
+
+                // billboard 朝向摄像机
                 Quaternion rot = Quaternion.LookRotation(Camera.main.transform.forward);
 
                 GameObject fx = Instantiate(explosion2D, pos, rot);

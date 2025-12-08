@@ -118,7 +118,7 @@ public class TrafficGameController : MonoBehaviour
         float crashRatio = totalPlannedCars == 0 ? 1 : (float)crashedCars / totalPlannedCars;
 
         if (crashRatio == 0f) goldUI?.SetActive(true);
-        else if (crashRatio >= 0.7) silverUI?.SetActive(true);
+        else if (crashRatio <= 0.3) silverUI?.SetActive(true);
         else copperUI?.SetActive(true);
 
         Debug.Log($"Game Finished. processed={processedCars}, total={totalPlannedCars}");

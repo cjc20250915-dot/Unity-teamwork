@@ -223,7 +223,7 @@ MonoBehaviour:
   - {fileID: 1567013959}
   - {fileID: 1707382117}
   - {fileID: 598824274}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -1585,7 +1585,7 @@ MonoBehaviour:
   - {fileID: 1030248075}
   - {fileID: 1168244815}
   - {fileID: 1268506958}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -12445,10 +12445,10 @@ RectTransform:
   - {fileID: 40387339}
   m_Father: {fileID: 1948463500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -7, y: 19}
-  m_SizeDelta: {x: -1369.4502, y: -344}
+  m_SizeDelta: {x: 550.5498, y: 736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &961630888
 MonoBehaviour:
@@ -18604,7 +18604,7 @@ MonoBehaviour:
   - {fileID: 2015404401}
   - {fileID: 287584727}
   - {fileID: 698401557}
-  spawnIntervalMin: 1
+  spawnIntervalMin: 2
   spawnIntervalMax: 4
   maxConcurrent: 3
   maxTotalCars: 10
@@ -19143,10 +19143,10 @@ RectTransform:
   - {fileID: 458645940}
   m_Father: {fileID: 1948463500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -7, y: 19}
-  m_SizeDelta: {x: -1369.4502, y: -344}
+  m_SizeDelta: {x: 550.5498, y: 736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1636655696
 MonoBehaviour:
@@ -24343,10 +24343,10 @@ RectTransform:
   - {fileID: 1874642544}
   m_Father: {fileID: 1948463500}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -7, y: 19}
-  m_SizeDelta: {x: -1369.4502, y: -344}
+  m_SizeDelta: {x: 550.5498, y: 736}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2131611246
 MonoBehaviour:
@@ -24683,6 +24683,10 @@ PrefabInstance:
     - target: {fileID: 3956309262829388095, guid: bd630efc50eef634682d411b8d4cc620, type: 3}
       propertyPath: m_Name
       value: SpawnerA
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972024637399045854, guid: bd630efc50eef634682d411b8d4cc620, type: 3}
+      propertyPath: spawnIntervalMin
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 5972024637399045854, guid: bd630efc50eef634682d411b8d4cc620, type: 3}
       propertyPath: 'pathWaypoints.Array.data[0]'
