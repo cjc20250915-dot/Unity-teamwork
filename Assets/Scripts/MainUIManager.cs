@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class UIManager : MonoBehaviour
 {
-    public GameObject mainPanel;         // 主面板（Start/About/Quit按钮）
-    public GameObject aboutPanel;        // About规则弹窗
-    public GameObject quitPanel;         // Quit确认弹窗
+    public GameObject mainPanel;         // Main panel (Start/About/Quit buttons)
+    public GameObject aboutPanel;        // About Rules Pop-up
+    public GameObject quitPanel;         // Quit confirmation pop-up
 
     void Start()
     {
@@ -15,34 +15,34 @@ public class UIManager : MonoBehaviour
         quitPanel.SetActive(false);
     }
 
-    // Start按钮：跳转到LevelUI场景（无改动）
+    // Start button: Jump to the LevelUI scene
     public void OnStartButtonClick()
     {
         ChangeScene("LevelUI");
     }
 
-    // 【修改1】About按钮：只显示弹窗，不隐藏主面板
+    // About button: Only show the pop-up, do not hide the main panel.
     public void OnAboutButtonClick()
     {
-        // 删掉 mainPanel.SetActive(false);
-        aboutPanel.SetActive(true); // 仅显示弹窗
+        // del mainPanel.SetActive(false);
+        aboutPanel.SetActive(true); // Show only pop-ups
     }
 
-    // 【修改2】About弹窗关闭按钮：只隐藏弹窗（主面板本就显示，无需再激活）
+    // About pop-up close button: Only hides the pop-up (it's already displayed on the main panel, no need to activate it again).
     public void OnAboutQuitButtonClick()
     {
         aboutPanel.SetActive(false);
-        // 删掉 mainPanel.SetActive(true);
+        // del mainPanel.SetActive(true);
     }
 
-    // 【修改3】Quit按钮：只显示弹窗，不隐藏主面板
+    // Quit button: Only show the pop-up window, do not hide the main panel.
     public void OnQuitButtonClick()
     {
-        // 删掉 mainPanel.SetActive(false);
-        quitPanel.SetActive(true); // 仅显示弹窗
+        // del mainPanel.SetActive(false);
+        quitPanel.SetActive(true); // Show only pop-ups
     }
 
-    // 【修改4】Quit弹窗Yes按钮：退出游戏（无改动）
+    // Quit pop-up Yes button: Exit game
     public void OnQuitYesButtonClick()
     {
         Debug.Log("游戏已退出！");
@@ -53,14 +53,14 @@ public class UIManager : MonoBehaviour
 #endif
     }
 
-    // 【修改5】Quit弹窗No按钮：只隐藏弹窗（主面板本就显示）
+    // Quit pop-up No button: Only hides the pop-up (it's already displayed on the main panel).
     public void OnQuitNoButtonClick()
     {
         quitPanel.SetActive(false);
-        // 删掉 mainPanel.SetActive(true);
+        // del mainPanel.SetActive(true);
     }
 
-    // 通用场景切换方法（无改动）
+    // General scene switching method
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);

@@ -7,10 +7,10 @@ public class SimpleGameManager : MonoBehaviour
 
     bool isPaused = false;
 
-    // 属性访问器
+    
     public bool IsPaused => isPaused;
 
-    // 暂停事件（例如暂停菜单 UI）
+    // Pause events (e.g., pause menu UI)
     public delegate void PauseEventHandler(bool isPaused);
     public event PauseEventHandler OnPauseStateChanged;
 
@@ -20,7 +20,7 @@ public class SimpleGameManager : MonoBehaviour
         if (Instance == null)
         {
             Instance = this;
-            Time.timeScale = 1f;   // 确保游戏开始时是正常速度
+            Time.timeScale = 1f;   // Ensure the game starts at normal speed
         }
         else
         {
@@ -31,7 +31,7 @@ public class SimpleGameManager : MonoBehaviour
 
     void Update()
     {
-        // 支持 P / ESC 切换暂停
+        // Supports P/ESC switching to pause
         if (Input.GetKeyDown(KeyCode.P) || Input.GetKeyDown(KeyCode.Escape))
         {
             TogglePause();
@@ -39,22 +39,21 @@ public class SimpleGameManager : MonoBehaviour
     }
 
 
-    /// <summary>
-    /// 切换暂停 / 继续
-    /// </summary>
+
+    // Toggle between pause and resume
+
     public void TogglePause()
     {
         isPaused = !isPaused;
         Time.timeScale = isPaused ? 0f : 1f;
 
-        // 通知 UI
+        // Notify UI
         OnPauseStateChanged?.Invoke(isPaused);
     }
 
 
-    /// <summary>
-    /// 重新加载当前场景，用于 Restart 按钮
-    /// </summary>
+    // Reload the current scene for the Restart button
+
     public void RestartGame()
     {
         Time.timeScale = 1f;

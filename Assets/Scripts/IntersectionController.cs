@@ -24,42 +24,18 @@ public class IntersectionController : MonoBehaviour
     {
         timer = greenDuration;
 
-        // 启动时广播一次，让灯光正常初始化
+        // Broadcast once at startup to allow the lights to initialize properly.
         OnStateChanged?.Invoke(currentState);
     }
 
     void Update()
     {
-
-        /*
-        timer -= Time.deltaTime;
-        if (timer <= 0f)
-        {
-            if (!isYellow)
-            {
-                isYellow = true;
-                timer = yellowDuration;
-            }
-            else
-            {
-                isYellow = false;
-                currentState = currentState == IntersectionState.NS_Green ?
-                               IntersectionState.EW_Green :
-                               IntersectionState.NS_Green;
-
-                timer = greenDuration;
-                OnStateChanged?.Invoke(currentState);
-            }
-        }
-        */
-
-      
         HandleManualInput();
     }
 
     void HandleManualInput()
     {
-        // 按 S → 南北方向绿灯
+        // Press S ,North-South green light
         if (Input.GetKeyDown(KeyCode.S))
         {
             currentState = IntersectionState.NS_Green;
@@ -67,7 +43,7 @@ public class IntersectionController : MonoBehaviour
             OnStateChanged?.Invoke(currentState);
         }
 
-        // 按 D → 东西方向绿灯
+        // Press D,East-West green light
         if (Input.GetKeyDown(KeyCode.D))
         {
             currentState = IntersectionState.EW_Green;
@@ -76,7 +52,7 @@ public class IntersectionController : MonoBehaviour
         }
     }
 
-    // 提供给 CarSensor 的绿灯查询接口（未做修改）
+    // Green light query interface provided to CarSensor
     public bool IsGreenForDirection(Vector3 dir)
     {
         bool northSouth = Mathf.Abs(dir.z) > Mathf.Abs(dir.x);

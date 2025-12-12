@@ -14,10 +14,10 @@ public class CarSensor : MonoBehaviour
     WaypointFollower follower;
     Rigidbody rb;
 
-    // --- 新增：停车锁 ---
-    bool stopLocked = false;       // 进入检测区时锁定停车
-    bool lightIsRed = false;       // 红灯状态
-    bool carInFront = false;       // 前车状态
+    // Added: Parking lock
+    bool stopLocked = false;       // Lock the car when entering the inspection area
+    bool lightIsRed = false;       //Red light status
+    bool carInFront = false;       // Front vehicle status
 
     void Awake()
     {
@@ -35,16 +35,16 @@ public class CarSensor : MonoBehaviour
 
         Vector3 origin = transform.position + transform.forward * (sensorRadius + 0.1f) + Vector3.up * 0.5f;
 
-        // -- 检测前车（SphereCast） --
+        // Detect the preceding vehicle (SphereCast)
         RaycastHit hitCar;
         bool carHit = Physics.SphereCast(origin, sensorRadius, transform.forward, out hitCar,
                                          checkDistance, carLayer, QueryTriggerInteraction.Ignore);
 
-        // 清理：忽略自己
+        // Clean up: Ignore yourself
         if (carHit && hitCar.collider.gameObject == this.gameObject)
             carHit = false;
 
-        // -- 检测路口 --
+        // Detection intersection
         RaycastHit hitInt;
         bool intersectionHit = Physics.SphereCast(origin, sensorRadius, transform.forward, out hitInt,
                                                   checkDistance, intersectionLayer, QueryTriggerInteraction.Collide);
@@ -60,26 +60,26 @@ public class CarSensor : MonoBehaviour
             }
         }
 
-        // 更新前车与红灯状态
+        // Update the status of the vehicle in front and the red light
         carInFront = carHit;
         lightIsRed = currentRedLight;
 
 
-        // ① 若检测到前车或红灯 → 立即进入停车锁状态
+        // If a vehicle ahead or a red light is detected, immediately engage the parking lock.
         if (carInFront || lightIsRed)
         {
             stopLocked = true;
         }
         else
         {
-            // ② 若两者都消失 → 车辆解锁可继续前进
+            // If both disappear, the vehicle can be unlocked and you can continue.
             stopLocked = false;
         }
 
-        // ③ 把状态传给 WaypointFollower
+        // Pass the state to WaypointFollower
         follower.shouldStop = stopLocked;
 
-        // Debug 可视化
+        // Debug
         DebugDraw(origin, checkDistance, carHit, hitCar, intersectionHit, hitInt);
     }
 

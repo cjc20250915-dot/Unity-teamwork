@@ -4,23 +4,23 @@ using UnityEngine;
 
 public class CarSpawner : MonoBehaviour
 {
-    [Header("车模型（在这里放 6 个 Variant）")]
-    public List<GameObject> carPrefabs;    // 新增：多车型随机生成
+    
+    public List<GameObject> carPrefabs;    // Added: Random generation of multiple car models
 
-    [Header("路径 Waypoints")]
-    public List<Transform> pathWaypoints;
 
-    [Header("生成间隔")]
+    public List<Transform> pathWaypoints;  // Waypoints
+
+    // Generation interval
     public float spawnIntervalMin = 1.2f;
     public float spawnIntervalMax = 3.0f;
 
-    [Header("最大同时存在车辆数")]
+    // Maximum number of vehicles that can exist at the same time
     public int maxConcurrent = 6;
 
-    [Header("总生成数量上限 (-1 = 不限制)")]
+    // Total number of generators capped (-1 = unlimit)
     public int maxTotalCars = -1;
 
-    [HideInInspector] public bool finished = false;//是否完成生成的布尔值，其实感觉这个没啥用。
+    [HideInInspector] public bool finished = false; // Whether the generation is completed, though actually I feel this isn't very useful
 
 
     int aliveCount = 0;
@@ -33,14 +33,14 @@ public class CarSpawner : MonoBehaviour
 
     IEnumerator SpawnLoop()
     {
-        // 无限循环 —— 只有生成到总量才退出
+        // Infinite loop — exits only when the total amount generated is reached.
         while (true)
         {
-            // 达到总生成上限 → 跳出循环（不是 yield break）
+            // Reaching the total generation limit， Exiting the loop 
             if (maxTotalCars >= 0 && totalSpawned >= maxTotalCars)
                 break;
 
-            // 当前存活未达上限 → 才生成
+            // Current survival limit not reached ，only generated now
             if (aliveCount < maxConcurrent)
             {
                 SpawnCar();
@@ -50,7 +50,7 @@ public class CarSpawner : MonoBehaviour
             yield return new WaitForSeconds(wait);
         }
 
-        // 移出 while，让它一定能执行到这里
+        // Move out of the while loop to ensure it always executes to this point.
         finished = true;
         TrafficGameController.Instance?.NotifySpawnerFinished();
     }
@@ -63,18 +63,16 @@ public class CarSpawner : MonoBehaviour
             return;
         }
 
-        // 从 6 个预制体中随机选择一个
+        // Randomly select one from 6 prefabs
 
         GameObject prefab = carPrefabs[Random.Range(0, carPrefabs.Count)];
 
         GameObject go = Instantiate(prefab, transform.position, transform.rotation);
 
-
-
         aliveCount++;
         totalSpawned++;
 
-        // 设置路径与速度
+        // Set path and speed
         var wf = go.GetComponent<WaypointFollower>();
         if (wf != null)
         {
@@ -82,7 +80,7 @@ public class CarSpawner : MonoBehaviour
             wf.maxSpeed = Random.Range(4.0f, 8.0f);
         }
 
-        // 等待车辆销毁后减少 aliveCount
+        // Decrease aliveCount after the vehicle is destroyed
         StartCoroutine(WaitUntilDestroyed(go));
     }
 

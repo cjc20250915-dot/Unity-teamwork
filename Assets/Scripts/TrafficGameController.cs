@@ -7,22 +7,22 @@ public class TrafficGameController : MonoBehaviour
 {
     public static TrafficGameController Instance;
 
-    [Header("Result Panels")]
+    // Result Panels
     public GameObject goldUI;
     public GameObject silverUI;
     public GameObject copperUI;
 
-    [Header("进度条 / 数字 UI")]
-    public Text progressText;               // 普通 Text
-    public TextMeshProUGUI progressTMP;     // TMP 可选
+    // Progress bar / Numeric UI
+    public Text progressText;               
+    public TextMeshProUGUI progressTMP;
 
-    [Header("撞车比例 UI")]
+    // Collision Ratio UI
     public Text crashRatioText;
     public TextMeshProUGUI crashRatioTMP;
 
 
-    int totalPlannedCars = 0;   // 所有发车口的总量
-    int processedCars = 0;      // 已经离场的车（正常走完或撞毁）
+    int totalPlannedCars = 0;   // Total number of departure gates
+    int processedCars = 0;      // Cars that have already left the scene (either completed their journey normally or were crashed)
     int crashedCars = 0;
 
     List<CarSpawner> spawners = new List<CarSpawner>();
@@ -41,10 +41,10 @@ public class TrafficGameController : MonoBehaviour
         if (silverUI) silverUI.SetActive(false);
         if (copperUI) copperUI.SetActive(false);
 
-        // 找到所有生成器
+        // Find all generators
         spawners.AddRange(FindObjectsByType<CarSpawner>(FindObjectsSortMode.None));
 
-        // 计算所有发车数量
+        // Calculate the total number of departures
         foreach (var sp in spawners)
         {
             if (sp.maxTotalCars > 0)
@@ -54,20 +54,20 @@ public class TrafficGameController : MonoBehaviour
         Debug.Log($"TrafficGameController: plannedCars = {totalPlannedCars}");
     }
 
-    // 车辆撞毁
+    // Vehicle crash
     public void OnCarCrash()
     {
         crashedCars++;
-        processedCars++;   // 属于已处理车辆
+        processedCars++;   // Vehicles that have already been processed
     }
 
-    // 车辆正常结束（到终点）
+    // The vehicle has completed its journey normally (to the destination).
     public void OnCarFinished()
     {
         processedCars++;
     }
 
-    // 所有 spawner 完成
+    // All spawners complete
     public void NotifySpawnerFinished()
     {
         foreach (var sp in spawners)
@@ -86,12 +86,12 @@ public class TrafficGameController : MonoBehaviour
 
         if (ended) return;
         if (!allSpawnersFinished) return;
-        if (processedCars < totalPlannedCars) return;  // 新逻辑：等所有车都“处理完”
+        if (processedCars < totalPlannedCars) return;  // New logic: Wait until all cars are "processed"
 
         EndGame();
     }
 
-    // 更新可视化 UI
+    // Update the visual UI
     void UpdateProgressUI()
     {
         if (totalPlannedCars == 0) return;
@@ -102,7 +102,7 @@ public class TrafficGameController : MonoBehaviour
         if (progressText) progressText.text = txt;
         if (progressTMP) progressTMP.text = txt;
 
-        //  撞车比值：crashedCars / total 
+        // Crash ratio: crashedCars / total
         float crashRatio = (float)crashedCars / totalPlannedCars;
         string ctxt = $"{crashedCars}/{totalPlannedCars} ";
 

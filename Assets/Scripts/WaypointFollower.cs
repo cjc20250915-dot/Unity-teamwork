@@ -27,13 +27,13 @@ public class WaypointFollower : MonoBehaviour
     {
         if (waypoints == null || waypoints.Count == 0) return;
 
-        //  防止重复触发
+        // Prevent repeated triggering
         if (hasFinished) return;
 
-        //  到达终点
+        // Reaching the destination
         if (wpIndex >= waypoints.Count)
         {
-            hasFinished = true; // 只会触发一次
+            hasFinished = true; // It will only trigger once
             TrafficGameController.Instance.OnCarFinished();
             Destroy(gameObject, 2f);
             return;

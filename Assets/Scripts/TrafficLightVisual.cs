@@ -6,7 +6,7 @@ public class TrafficLightVisual : MonoBehaviour
     public GameObject redLight;
     public IntersectionController controller;
 
-    [Header("此灯是否是南北方向的灯？")]
+    // Is this light for the north-south direction?
     public bool isNorthSouth = true;
 
     void Start()
@@ -14,16 +14,16 @@ public class TrafficLightVisual : MonoBehaviour
         if (controller != null)
             controller.OnStateChanged += UpdateVisual;
 
-        // 初始化显示
+        // Initialize display
         UpdateVisual(controller.currentState);
     }
 
     void UpdateVisual(IntersectionController.IntersectionState state)
     {
-        // 是否是当前方向的绿灯
+        // Is it a green light for the current direction?
         bool nsGreen = (state == IntersectionController.IntersectionState.NS_Green);
 
-        // 若本灯属于 NS 方向，则绿灯取 nsGreen；若属于 EW，则取 !nsGreen
+        // If this light is in the NS direction, the green light value is nsGreen; if it is in the EW direction, the green light value is !nsGreen.
         bool myGreen = isNorthSouth ? nsGreen : !nsGreen;
 
         greenLight.SetActive(myGreen);
